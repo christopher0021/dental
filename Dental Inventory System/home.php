@@ -1,17 +1,17 @@
 <?php 
+
 	include('config/db_conn.php');
 
-	$sql = "SELECT id, Product_Name, Product_Stock, Last_Updated FROM inventory";
-
+	$sql = "SELECT id, Product_Name, Product_Stock, Last_Updated 
+					FROM inventory";
 	$result = mysqli_query($conn, $sql);
-
 	$inv = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 	mysqli_free_result($result);
-
 	mysqli_close($conn);
 
  ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,19 +28,17 @@
   display: flex;
   margin: auto;
   width: 250px;
-  height: 25px;
 }
 </style>
 </head>
 <body>	
-	<div class="center">
+	<div class="box center">
 		<ul>
-			<a href="add.php" class="btn brand ">add</a>
-			<a href="edit.php" class="btn brand ">edit</a>
-			  <div class="box center">
-			    <form action="home.php">
+			<a href="add.php" class="btn brand ">add a product</a>
+			  <div class="center">
+			    <form action="search.php" method="POST">
 			      <input type="text" placeholder="Search..." name="search">
-			    	<button type="submit" class="btn brand">Submit</button>     
+			    	<button type="submit" name="" class="btn brand">Search</button>   
 				 </form>
 			 </div>
 		</ul>
@@ -61,6 +59,7 @@
 			<td class="center"><?php echo ($inv['Product_Name']); ?></td>
 			<td class="center"><?php echo ($inv['Product_Stock']); ?></td>
 			<td class="center"><?php echo ($inv['Last_Updated']); ?></td>
+			<td><a href="edit.php?id=<?php echo $inv['id'] ?>" class="btn brand ">edit</a></td>
 				<form action="delete.php" method="POST">
 				<td>
 				<input type="hidden" name="delete_id" value="<?php echo $inv['id']; ?>">
