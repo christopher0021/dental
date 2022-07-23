@@ -8,7 +8,7 @@
 	$inv = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 	mysqli_free_result($result);
-	mysqli_close($conn);
+
 
  ?>
 
@@ -36,8 +36,8 @@
 		<ul>
 			<a href="add.php" class="btn brand ">add a product</a>
 			  <div class="center">
-			    <form action="search.php" method="POST">
-			      <input type="text" placeholder="Search..." name="search">
+			    <form action="search.php" method="GET">
+			      <input type="text" placeholder="Search..." name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>">
 			    	<button type="submit" name="" class="btn brand">Search</button>   
 				 </form>
 			 </div>
