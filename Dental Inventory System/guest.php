@@ -31,6 +31,12 @@
     	.brand-text{
     		color: #6086FF !important;
     	}
+    	.box
+		{
+		  display: flex;
+		  margin: auto;
+		  width: 250px;
+		}
 	</style>
 </head>
 <body class="blue lighten-4">
@@ -41,6 +47,17 @@
 	</nav>
 </head>
 <body>	
+	<div class="box center">
+		<ul>
+			  <div class="center">
+			    <form action="guest_search.php" method="GET">
+			      <input type="text" placeholder="Search..." name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>">
+			    	<button type="submit" name="" class="btn brand">Search</button>   
+				 </form>
+			 </div>
+		</ul>
+	</div>
+	
 	<div class="container">
 			<table class="table table-striped white">
 			
